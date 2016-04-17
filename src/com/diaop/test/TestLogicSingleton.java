@@ -8,7 +8,8 @@ import com.diaop.annotation.Pointcut;
 public class TestLogicSingleton {
 
 	@Pointcut
-	public void test() {
+	public String test(String callerName) {
 		System.out.println(this.getClass().getName());
+		return callerName;
 	}
 }

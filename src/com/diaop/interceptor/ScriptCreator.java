@@ -19,14 +19,26 @@ public class ScriptCreator {
 		String dq = "\"";
 		StringBuilder builder = new StringBuilder();
 		builder.append(dq).append(methodname).append(dq);
-		for (String name : paramClassnames) {
-			builder.append(",");
-			builder.append(dq).append(name).append(dq);
-		}
+		builder.append(",");
+		
 		if (paramClassnames.length == 0) {
-			builder.append(",null");
+			builder.append("null");
+		} else {
+			builder.append("new String[]{");
+			boolean isFirst = true;
+			for (String name : paramClassnames) {
+				if (!isFirst) {
+					builder.append(",");
+				}
+				isFirst = false;
+				builder.append(dq).append(name).append(dq);
+			}
+			builder.append("}");
 		}
+		
+		
 		String paramstr = builder.toString();
+		System.out.println(paramstr);
 		return GET_POINTCUT.replaceAll("replacestr", paramstr);
 	}
 }

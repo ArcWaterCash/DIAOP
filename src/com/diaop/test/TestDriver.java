@@ -76,9 +76,9 @@ public final class TestDriver extends Thread {
 	
 	@Pointcut(TestInterceptor.class)
 	public void test() {
-		serviceProt.test();
-		serviceSingle.test();
-		serviceThread.test();
+		System.out.println(serviceProt.test(this.getClass().getName()));
+		System.out.println(serviceSingle.test(this.getClass().getName()));
+		System.out.println(serviceThread.test(this.getClass().getName()));
 	}
 	
 	public void run() {

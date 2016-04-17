@@ -20,12 +20,14 @@ public class TestServiceSingleton {
 	TestLogicThreadLocal logicThread;
 	
 	@Pointcut
-	public void test() {
+	public String test(String callerName) {
 		System.out.println(this.getClass().getName());
-		logicProt.test();
+		System.out.println(logicProt.test(this.getClass().getName()));
 		
-		logicSingle.test();
+		System.out.println(logicSingle.test(this.getClass().getName()));
 		
-		logicThread.test();
+		System.out.println(logicThread.test(this.getClass().getName()));
+		
+		return callerName;
 	}
 }
